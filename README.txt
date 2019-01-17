@@ -46,3 +46,26 @@ This code is for raspberry pis equiped with a sense hat and camera equiped. It a
                       ######################################################################
                       
 This code collects sensor data from the pi's sense hat such as pressure and temperature, as well as altitude data from an i2c altimiter, to compile a .csv file of the nature of the pi's surroundings. It stores thee files every 30 minutes to an external storage device, inside the balloon's black box. The code also makes use of the sense hat's led array, but this can be turned off by changing the value of the variable 'led' to 0.
+
+                      ######################################################################
+                      #                                                                    #
+                      #                     User manual                                    #
+                      #                                                                    #
+                      ######################################################################
+                      
+To initiate the code on startup, folllow the following commands:
+
+~: crontab -e
+@reboot python path/Temp.py
+@reboot python path/Camera.py
+ctrl+x
+y
+enter
+
+To enable the camera on startup, follow these commands
+~: sudo nano /boot/config.txt
+gpu_mem=128
+disable_camera_led=1
+start_file=start_x.elf
+fixup_file=fixup_x.dat
+                                        
