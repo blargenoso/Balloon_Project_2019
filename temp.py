@@ -4,6 +4,7 @@ import time
 from time import sleep
 sense = SenseHat()
 
+led = 1
 ticks = time.time()
 doc = 0
 
@@ -31,9 +32,9 @@ while doc < 4:
         
         csv.write('\n')
         csv.write(str(ticks)+ ',' + str(tempf) + ',' + str(pressure) + ',' + str(humidity))
-
-        sense.show_message("working")
-        sense.show_letter("W", (100, 50, 0))
+        if led == 1:
+            sense.show_message("working")
+            sense.show_letter("W", (100, 50, 0))
         sleep(30)
         sense.clear((0, 0, 0))
         sleep(1)
