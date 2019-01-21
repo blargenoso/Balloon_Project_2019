@@ -49,7 +49,7 @@ This code collects sensor data from the pi's sense hat such as pressure and temp
 
                       ######################################################################
                       #                                                                    #
-                      #                     User manual                                    #
+                      #       User manual (all of this info can be found in the wiki)      #
                       #                                                                    #
                       ######################################################################
                       
@@ -68,4 +68,16 @@ gpu_mem=128
 disable_camera_led=1
 start_file=start_x.elf
 fixup_file=fixup_x.dat
-                                        
+
+To enable the i2c altimiter we are using on this project, follow these commands (make sure you are connected to the internet)
+On raspibian:
+sudo apt-get install build-essential libi2c-dev i2c-tools python-dev libffi-dev
+On arch linux:
+pacman -S base-devel
+pacman -S i2c-tools
+
+once we have that installed, the rest is the same for both versions
+pip install cffi
+pip install smbus-cffi
+pip install git+https://github.com/bivab/smbus-cffi.git
+git clone https://github.com/bivab/smbus-cffi.git
