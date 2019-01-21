@@ -1,9 +1,10 @@
+# Import code dependencies
 from sense_hat import SenseHat
 import datetime
 import time
 from time import sleep
 import smbus
-import time
+# declare variables from dependencies
 bus = smbus.SMBus(1)
 
 sense = SenseHat()
@@ -11,19 +12,22 @@ sense = SenseHat()
 led = 1
 ticks = time.time()
 doc = 0
-
+# Some led stuff
 sense.clear((100, 0, 100))
 sleep(5)
 sense.show_message("Starting")
 sense.clear((100, 25, 100))
 sleep(60)
 count = 0
+# Open doc
 while doc < 4:
     csv = open('/media/pi/9083-4562/tempdata(' + str(doc) + ').csv', 'w')
+    # doc header
     csv.write('time' + ',' + 'temp' + ',' + 'pressure' + ',' + 'humidity')
     csv.write('\n')
     count = 0
     doc += 1
+    # take data and insert it into the doc
     while count < 60:
         ticks = time.time()
         print (ticks)
@@ -49,6 +53,7 @@ while doc < 4:
         
         csv.write('\n')
         csv.write(str(ticks)+ ',' + str(tempf) + ',' + str(pressure) + ',' + str(humidity) + ',' + str(altitudef) )
+        # turns led messages on or off
         if led == 1:
             sense.show_message("working")
             sense.show_letter("W", (100, 50, 0))
@@ -59,7 +64,7 @@ while doc < 4:
 sense.show_message("done")
 sense.clear((0, 100, 0))
 csv.close()
-print('info.txt is closed')#
+print('Done!')
 
 
 
