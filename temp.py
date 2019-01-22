@@ -23,7 +23,7 @@ count = 0
 while doc < 4:
     csv = open('/media/pi/9083-4562/tempdata(' + str(doc) + ').csv', 'w')
     # doc header
-    csv.write('time' + ',' + 'temp' + ',' + 'pressure' + ',' + 'humidity')
+    csv.write('time' + ',' + 'temp' + ',' + 'pressure' + ',' + 'humidity' + ',' + 'altitude')
     csv.write('\n')
     count = 0
     doc += 1
